@@ -2,7 +2,7 @@ import express from "express"
 
 import listEndPoints from "express-list-endpoints"
 
-import bodyParser from "body-parser"
+// import bodyParser from "body-parser"
 
 import { engine } from "express-handlebars"
 
@@ -12,16 +12,14 @@ import { fileURLToPath } from "url"
 
 import emailRouter from "./services/email/index.js"
 
-import nodemailer from "nodemailer"
-
-import { NotFound } from "./errorhandler.js"
+// import { NotFound } from "./errorhandler.js"
 
 import cors from "cors"
 import dotenv from "dotenv"
 
 dotenv.config()
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3001
 const app = express()
 
 const exphbs = engine
@@ -39,20 +37,20 @@ app.use("/email", emailRouter)
 
 // View engine setup
 
-app.engine("handlebars", exphbs())
+// app.engine("handlebars", exphbs())
 
-app.set("view engine", "handlebars")
+// app.set("view engine", "handlebars")
 
-//Static folder
-app.use("/public", express.static(path.join(__dirname, "public")))
+// //Static folder
+// app.use("/public", express.static(path.join(__dirname, "public")))
 
-// Body Parser Middleware
-app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
-app.use(bodyParser.json()) // parse application/json
+// // Body Parser Middleware
+// app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
+// app.use(bodyParser.json()) // parse application/json
 
-app.get("/", async (req, res) => {
-    res.render("contact", { layout: false })
-})
+// app.get("/", async (req, res) => {
+//     res.render("contact", { layout: false })
+// })
 
 console.table(listEndPoints(app))
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`))
