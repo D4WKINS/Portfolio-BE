@@ -6,6 +6,8 @@ const emailRouter = express.Router()
 
 emailRouter.post("/", async (req, res, next) => {
     const data = req.body
+
+    //What the receiver is going to receive when they get the email
     const output = `
     <p>You have a new message!</p>
     <h3>Contact Details</h3>
@@ -17,7 +19,7 @@ emailRouter.post("/", async (req, res, next) => {
     <p>${req.body.message}</p>
     
     `
-
+    // Create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
         service: "gmail",
         port: 587,
@@ -35,7 +37,7 @@ emailRouter.post("/", async (req, res, next) => {
     let mail = {
         from: '"Nodemailer Contact" <foo@example.com>', // sender address
         to: "carlanthony782@gmail.com, carldawkins6@gmail.com", // Subject line
-        subject: "Node Contact Request",
+        subject: "New message",
         // text: "Hello world?", // plain text body
         html: output // html body}
     }
