@@ -4,11 +4,11 @@ import listEndPoints from "express-list-endpoints"
 
 // import bodyParser from "body-parser"
 
-import { engine } from "express-handlebars"
+// import { engine } from "express-handlebars"
 
-import path from "path"
+// import path from "path"
 
-import { fileURLToPath } from "url"
+// import { fileURLToPath } from "url"
 
 import emailRouter from "./services/email/index.js"
 
@@ -22,9 +22,9 @@ dotenv.config()
 const PORT = process.env.port || 3001
 const app = express()
 
-const exphbs = engine
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+// const exphbs = engine
+// const __filename = fileURLToPath(import.meta.url)
+// const __dirname = path.dirname(__filename)
 
 app.use(express.json())
 app.use(cors())
